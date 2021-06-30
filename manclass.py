@@ -12,29 +12,27 @@
 
  you need also to provide your specific input (source folder, labels and other) in the preamble
  original Author: Christian Baumgartner (c.baumgartner@imperial.ac.uk)
- changes, version 2: Nestor Arsenov (nestorarsenov_AT_gmail_DOT_com)
- Date: 24. Dec 2018
+ changes, version 2: Nestor Arsenov (nestorarsenov@gmail.com), Date: 24. Dec 2018
+ changes, version 3: J Kwon, Date: 29 Jun 2021
 """
 
 
 # Define global variables, which are to be changed by user:
 
-# In[5]:
-
-
 ##### added in version 2
-
+from pathlib import Path
 # the folder in which the pictures that are to be sorted are stored
 # don't forget to end it with the sign '/' !
-input_folder = '/file_path/to/image_folder/'
+scriptdir = Path(__file__).parent.resolve()
+input_folder = str((scriptdir / 'train' / 'n09428293').resolve()) + "/"
 
 # the different folders into which you want to sort the images, e.g. ['cars', 'bikes', 'cats', 'horses', 'shoes']
-labels = ["label1", "label2", "label3"]
+labels = ["water", "no_water", "NA"]
 
 # provide either 'copy' or 'move', depending how you want to sort the images into the new folders
 # - 'move' starts where you left off last time sorting, no 'go to #pic', works with number-buttons for labeling, no txt-file for tracking after closing GUI, saves memory
 # - 'copy' starts always at beginning, has 'go to #pic', doesn't work with number-buttons, has a txt-for tracking the labels after closing the GUI
-copy_or_move = 'copy'
+copy_or_move = 'move'  # key bindings only work for move
 
 # Only relevant if copy_or_move = 'copy', else ignored
 # A file-path to a txt-file, that WILL be created by the script. The results of the sorting wil be stored there.
@@ -42,19 +40,16 @@ copy_or_move = 'copy'
 # If you provide a path to file that already exists, than this file will be used for keeping track of the storing.
 # This means: 1st time you run this script and such a file doesn't exist the file will be created and populated,
 # 2nd time you run the same script, and you use the same df_path, the script will use the file to continue the sorting.
-df_path = '/file_path/to/non_existing_file_df.txt'
+df_path = str((scriptdir / 'train' ).resolve()) + "labels.txt"
 
 # a selection of what file-types to be sorted, anything else will be excluded
-file_extensions = ['.jpg', '.png', '.whatever']
+file_extensions = ['.JPEG']  # ['.jpg', '.png', '.whatever']
 
 # set resize to True to resize image keeping same aspect ratio
 # set resize to False to display original image
 resize = True
 
 #####
-
-
-# In[8]:
 
 
 
