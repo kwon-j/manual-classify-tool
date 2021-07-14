@@ -24,7 +24,7 @@ from pathlib import Path
 # the folder in which the pictures that are to be sorted are stored
 # don't forget to end it with the sign '/' !
 scriptdir = Path(__file__).parent.resolve()
-input_folder = str((scriptdir / 'train' / 'n09428293').resolve()) + "/"
+input_folder = str((scriptdir / 'train' / 'n02837789').resolve()) + "/"
 
 # the different folders into which you want to sort the images, e.g. ['cars', 'bikes', 'cats', 'horses', 'shoes']
 labels = ["water", "no_water", "NA"]
@@ -40,7 +40,7 @@ copy_or_move = 'move'  # key bindings only work for move
 # If you provide a path to file that already exists, than this file will be used for keeping track of the storing.
 # This means: 1st time you run this script and such a file doesn't exist the file will be created and populated,
 # 2nd time you run the same script, and you use the same df_path, the script will use the file to continue the sorting.
-df_path = str((scriptdir / 'train' ).resolve()) + "labels.txt"
+df_path = str(scriptdir) + '/train/labels.txt'
 
 # a selection of what file-types to be sorted, anything else will be excluded
 file_extensions = ['.JPEG']  # ['.jpg', '.png', '.whatever']
